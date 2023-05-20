@@ -22,6 +22,13 @@ contract EtherMath {
         latestSolved = true;
     }
 
+    // modifiers are used to add a repeatable condition to a function
+    modifier onlyOwner() {
+      require(msg.sender == owner, "Only the contract owner may call this function.");
+      // the underscore is a placeholder for the rest of the function body, so this is like a wrapper of sorts
+      _;
+    }
+
     // private functions cannot be called from outside the contract, pure functions cannot read or write contract state
     function validAnswer(int256[] memory array, int256 target) private pure returns (bool) {
         for (uint256 i = 0; i < array.length; i++) {
@@ -32,9 +39,7 @@ contract EtherMath {
         return false;
     }
 
-
-    function submitChallenge(int256[] memory array, int256 targetSum) public payable {
-        require(msg.sender == owner, "Only the contract owner may submit challenges.");
+    function submitChallenge(int256[] memory array, int256 targetSum) public payable onlyOwner {
         require(latestSolved, "Current challenge has not yet been solved.");
         require(msg.value > 0, "Must offer a non-zero reward in a challenge.");
         latestSolved = false;
