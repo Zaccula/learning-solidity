@@ -22,6 +22,8 @@ contract FancyShirts {
 
     function getShirtPrice(Size size, Color color) public pure returns (uint) {
         uint cost = 0;
+        // alternative size cost calculation, but not as readable imo
+        // cost += 10 + (uint(size) * 5);
         if (size == Size.SMALL) {
             cost += 10;
         } else if (size == Size.MEDIUM) {
