@@ -9,3 +9,5 @@ Just a few short, self-contained contracts written while learning Solidity, foll
 **SimpleBank** - Users can deposit funds into the contract and withdraw them at any time, or check their active balance. Contract creator cannot take from the funds, nor is there any function to selfdestruct.
 
 **FancyShirts** - Users can "buy" shirts using a few specific combos of size and color. This one was meant to mostly demonstrate uses of enum, but in figuring out how to solve this problem I also figured out how to use a combo hash as a mapping key. Whether or not this is a good/cost efficient approach... not sure yet.
+
+**GreedyBanker** - Similar to SimpleBank, but after the initial deposit a constant fee of 1,000 wei is sent to the contract owner for each deposit. Withdrawals are always free.
