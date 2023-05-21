@@ -2,7 +2,8 @@
 pragma solidity >= 0.8.17;
 
 contract EtherMath {
-    address owner; // address type is a the address of a wallet or other contract
+    // using the immutable keyword changes the EVM opcode used when accessing from SLOAD to PUSH32, costing less gas
+    address immutable owner; // address type is a the address of a wallet or other contract
     address lastWinner;
     bool latestSolved;
     mapping(address => bool) currentChallengeAttempted; // mapping type is a key-value store
