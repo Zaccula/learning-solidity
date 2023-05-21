@@ -33,7 +33,7 @@ contract GreedyBanker {
         require(bank[msg.sender].balance >= amount, "You cannot withdraw more than your current balance.");
         bank[msg.sender].balance -= amount;
         (bool withdrawn, ) = payable(msg.sender).call{value: amount}("");
-		if (!withdrawn) revert();
+	if (!withdrawn) revert();
     }
 
     function collectFees() external {
@@ -42,7 +42,7 @@ contract GreedyBanker {
         // Setting balance to 0 before sending to prevent re-entrancy attack
         bank[banker].balance = 0;
         (bool withdrawn,) = payable(banker).call{value: oldAmount}("");
-		    if (!withdrawn) revert();
+	if (!withdrawn) revert();
     }
 
     function getBalance() public view returns (uint256) {
